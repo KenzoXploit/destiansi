@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariwisata Sulawesi Selatan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #007bff, #00b894);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+        }
+        .nav-link:hover, .dropdown-item:hover {
+            color: #ffc107 !important;
+        }
+
+        .btn-outline-light {
+            border-radius: 25px;
+        }
+
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero video {
+            object-fit: cover;
+        }
+
+        .hero .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 60px 0 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #007bff, #00b894);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+        }
+
+        .rekomendasi {
+            background: linear-gradient(45deg, #3acfd5, #3a4ed5);
+            padding: 60px 0;
+            color: white;
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        footer {
+            background: linear-gradient(to right, #2c3e50, #34495e);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: #ffd700;
+        }
+
+        .shadow-sm:hover {
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">WISATA SULAWESI SELATAN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">BERANDA</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="wisataDropdown" role="button" data-bs-toggle="dropdown">
+                            OBJEK WISATA
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/kategori/wisatareligi">Objek Wisata Religi</a></li>
+                            <li><a class="dropdown-item" href="/kategori/wisatamangrove">Objek Wisata Mangrove</a></li>
+                            <li><a class="dropdown-item" href="/kategori/wisatasejarah">Objek Wisata Sejarah</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="/login" class="btn btn-outline-light">LOGIN</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video -->
+    <section class="hero">
+        <video autoplay muted loop playsinline class="position-absolute w-100 h-100">
+            <source src="https://kenzo-fdl.my.id/TheBoys/bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="content">
+            <h1 class="fw-bold display-4">KUNJUNGI WISATA YANG ADA DI SULAWESI SELATAN</h1>
+            <p class="lead">Explore the beauty of Indonesian nature and culture</p>
+        </div>
+    </section>
+
+    <!-- Statistik Pengunjung -->
+    <section class="py-5 bg-light text-center">
+        <div class="container">
+            <h2 class="section-title">Statistik Pengunjung Website</h2>
+            <p class="text-muted mb-4">Bergabunglah dengan ribuan wisatawan yang telah mempercayai kami</p>
+            <div class="row justify-content-center">
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="p-4 border rounded shadow-sm">
+                        <i class="fa fa-eye fa-2x mb-2 text-primary"></i>
+                        <h3 class="fw-bold">{{ number_format($totalVisitors) }}</h3>
+                        <p class="text-muted mb-0">Total Pengunjung</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="p-4 border rounded shadow-sm">
+                        <i class="fa fa-chart-line fa-2x mb-2 text-success"></i>
+                        <h3 class="fw-bold">{{ $pengunjungHariIni ?? '1' }}</h3>
+                        <p class="text-muted mb-0">Pengunjung Hari Ini</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="p-4 border rounded shadow-sm">
+                        <i class="fa fa-globe fa-2x mb-2" style="color: #9b59b6;"></i>
+                        <h3 class="fw-bold">1</h3>
+                        <p class="text-muted mb-0">Negara Pengunjung</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rekomendasi Section -->
+    <section class="rekomendasi">
+        <div class="container">
+            <h2 class="section-title">REKOMENDASI WISATA</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center">
+                        <img src="{{ asset('uploads/1751042299_99kuba.jpeg') }}" class="card-img-top" alt="99kuba">
+                        <div class="card-body">
+                            <h5 class="card-title">Masjid 99 Kubah Makassar</h5>
+                            <p class="card-text"><strong>1st place</strong><br>Objek Wisata Religi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center">
+                        <img src="{{ asset('uploads/1750742909_benteng.jpg') }}" class="card-img-top" alt="benteng">
+                        <div class="card-body">
+                            <h5 class="card-title">Benteng Rotterdam</h5>
+                            <p class="card-text"><strong>2nd place</strong><br>Objek Wisata Sejarah</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center">
+                        <img src="{{ asset('images/rajaampat.jpg') }}" class="card-img-top" alt="Raja Ampat">
+                        <div class="card-body">
+                            <h5 class="card-title">Piyanemo Raja Ampat</h5>
+                            <p class="card-text"><strong>3rd place</strong><br>Piyanemo Raja Ampat</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center">
+                        <img src="{{ asset('images/kelimutu.jpg') }}" class="card-img-top" alt="Gunung Kelimutu">
+                        <div class="card-body">
+                            <h5 class="card-title">Gunung Kelimutu</h5>
+                            <p class="card-text"><strong>4th place</strong><br>Gunung Kelimutu</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <h3>WISATA SULAWESI SELATAN</h3>
+            <p>Temukan kedamaian spiritual dan keindahan alam di Provinsi Sulawesi Selatan</p>
+            <div class="social-links mt-3">
+                <a href="http://instagram.com/algzspace"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+            <p class="mt-3">&copy; {{ date('Y') }} Wisata Sulawesi Selatan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const video = document.querySelector("video");
+    if (video) {
+        video.play().catch(error => {
+            console.log("Autoplay diblokir: ", error);
+        });
+    }
+});
+</script>
+</body>
+</html>
