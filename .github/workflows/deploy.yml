@@ -12,7 +12,7 @@ jobs:
       
     steps:
     - name: checkout repository
-      uses: action/checkout@v3
+      uses: actions/checkout@v3
       
     - name: Deploy To VPS Via SSH
       uses: appleboy/ssh-action@master
