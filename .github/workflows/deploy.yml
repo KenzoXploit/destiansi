@@ -5,26 +5,26 @@ on:
     branches:
       - main
       
-  jobs:
-    deploy:
-      runs-on: ubuntu-latest
-      environment: CI/CD
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: CI/CD
       
-      steps:
-      - name: checkout repository
-        uses: action/checkout@v3
+    steps:
+    - name: checkout repository
+      uses: action/checkout@v3
       
-      - name: Deploy To VPS Via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          key: ${{ secrets.VPS_KEY }}
-          port: 22 
-          script: |
-            cd /root/wisata-fadel/src
-            git pull origin main
-            docker exec fadel-app composer install --no-interaction --prefer-dist --optimize-autoloader
-            docker exec fadel-app chown -R www-data:www-data .
-            docker exec fadel-app php artisan migrate --force
-            docker exec fadel-app php artisan config:cache
+    - name: Deploy To VPS Via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_KEY }}
+        port: 22 
+        script: |
+          cd /root/wisata-fadel/src
+          git pull origin main
+          docker exec fadel-app composer install --no-interaction --prefer-dist --optimize-autoloader
+          docker exec fadel-app chown -R www-data:www-data .
+          docker exec fadel-app php artisan migrate --force
+          docker exec fadel-app php artisan config:cache
