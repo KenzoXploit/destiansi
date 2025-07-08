@@ -4,27 +4,43 @@ on:
   push:
     branches:
       - main
-      
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: CI/CD
-      
+
     steps:
-    - name: checkout repository
+    - name: Checkout repository
       uses: actions/checkout@v3
-      
+
     - name: Deploy To VPS Via SSH
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USERNAME }}
         key: ${{ secrets.VPS_KEY }}
-        port: 22 
+        port: 22
         script: |
+          echo "📥 Pulling latest code..."
           cd /root/wisata-fadel/src
           git pull origin main
-          docker exec fadel-app composer install --no-interaction --prefer-dist --optimize-autoloader
-          docker exec fadel-app chown -R www-data:www-data .
-          docker exec fadel-app php artisan migrate --force
+
+          echo "🎯 Clearing Laravel cache..."
+          docker exec fadel-app php artisan optimize:clear
           docker exec fadel-app php artisan config:cache
+
+          echo "📦 Installing dependencies..."
+          docker exec fadel-app composer install --no-interaction --prefer-dist --optimize-autoloader
+
+          # Jika ada Vite/Mix build asset frontend
+          if docker exec fadel-app test -f package.json; then
+            echo "⚡ Building frontend assets..."
+            docker exec fadel-app npm install
+            docker exec fadel-app npm run build
+          fi
+
+          echo "🛠 Migrating database..."
+          docker exec fadel-app php artisan migrate --force
+
+          echo "✅ Deploy complete!"
