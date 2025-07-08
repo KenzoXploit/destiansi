@@ -137,6 +137,10 @@
             color: #ffc107 !important;
         }
 
+        .btn-outline-light {
+            border-radius: 25px;
+        }
+
         /* Footer styling */
         footer {
             background: linear-gradient(to right, #2c3e50, #34495e);
@@ -180,8 +184,7 @@
             }
             
             .btn-outline-light {
-                padding: 0.25rem 0.5rem;
-                font-size: 0.9rem;
+                border-radius: 25px;
             }
         }
 
@@ -196,6 +199,12 @@
             
             .form-label, .form-control, .btn-login {
                 font-size: 0.9rem;
+            }
+
+            .main-container {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
             }
         }
     </style>
@@ -263,8 +272,8 @@
                 </form>
             </div>
         </div>
-
-        <!-- Footer -->
+    </div>
+            <!-- Footer -->
         <footer class="text-center">
             <div class="container">
                 <h3>WISATA SULAWESI SELATAN</h3>
@@ -277,7 +286,6 @@
                 <p class="mt-3">&copy; {{ date('Y') }} Wisata Sulawesi Selatan. All Rights Reserved.</p>
             </div>
         </footer>
-    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

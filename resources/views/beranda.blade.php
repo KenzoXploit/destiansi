@@ -34,7 +34,7 @@
         }
 
         .hero {
-            height: 100vh;
+            height: 90vh;
             position: relative;
             display: flex;
             align-items: center;
@@ -74,19 +74,39 @@
 
         .section-title::after {
             content: '';
-            width: 80px;
+            width: 120px;
             height: 4px;
             background: linear-gradient(to right, #007bff, #00b894);
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: -10px;
+            bottom: -15px;
         }
 
         .rekomendasi {
             background: linear-gradient(45deg, #3acfd5, #3a4ed5);
-            padding: 60px 0;
+            padding: 10px 0 50px; /* Kurangi padding atas dan bawah */
             color: white;
+        }
+
+        .pengunjung {
+            padding: 10px 0 50px;
+        }
+
+        /* Tambahkan media query untuk responsif */
+        @media (max-width: 768px) {
+            .rekomendasi {
+                padding: 30px 0 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin: 40px 0 15px;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
         }
 
         .card {
@@ -109,8 +129,8 @@
         footer {
             background: linear-gradient(to right, #2c3e50, #34495e);
             color: white;
-            padding: 30px 0;
-            margin-top: 50px;
+            padding: 20px 0; /* Kurangi padding */
+            margin-top: 0; /* Hapus margin top */
         }
 
         .social-links a {
@@ -173,30 +193,30 @@
     </section>
 
     <!-- Statistik Pengunjung -->
-    <section class="py-5 bg-light text-center">
+    <section class="pengunjung">
         <div class="container">
-            <h2 class="section-title">Statistik Pengunjung Website</h2>
-            <p class="text-muted mb-4">Bergabunglah dengan ribuan wisatawan yang telah mempercayai kami</p>
+            <h2 class="section-title">Statistik Pengunjung Website</h2><br>
+            <center><p class="text-muted mb-4">Bergabunglah dengan ribuan wisatawan yang telah mempercayai kami</p></center>
             <div class="row justify-content-center">
                 <div class="col-md-3 col-6 mb-3">
                     <div class="p-4 border rounded shadow-sm">
-                        <i class="fa fa-eye fa-2x mb-2 text-primary"></i>
-                        <h3 class="fw-bold">{{ number_format($totalVisitors) }}</h3>
-                        <p class="text-muted mb-0">Total Pengunjung</p>
+                        <center><i class="fa fa-eye fa-2x mb-2 text-primary"></i></center>
+                        <center><h3 class="fw-bold">{{ number_format($totalVisitors) }}</h3></center>
+                        <center><p class="text-muted mb-0">Total Pengunjung</p></center>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-3">
                     <div class="p-4 border rounded shadow-sm">
-                        <i class="fa fa-chart-line fa-2x mb-2 text-success"></i>
-                        <h3 class="fw-bold">{{ $pengunjungHariIni ?? '1' }}</h3>
-                        <p class="text-muted mb-0">Pengunjung Hari Ini</p>
+                        <center><i class="fa fa-chart-line fa-2x mb-2 text-success"></i></center>
+                        <center><h3 class="fw-bold">{{ $pengunjungHariIni ?? '1' }}</h3></center>
+                        <center><p class="text-muted mb-0">Pengunjung Hari Ini</p></center>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-3">
                     <div class="p-4 border rounded shadow-sm">
-                        <i class="fa fa-globe fa-2x mb-2" style="color: #9b59b6;"></i>
-                        <h3 class="fw-bold">1</h3>
-                        <p class="text-muted mb-0">Negara Pengunjung</p>
+                        <center><i class="fa fa-globe fa-2x mb-2" style="color: #9b59b6;"></i></center>
+                        <center><h3 class="fw-bold">1</h3></center>
+                        <center><p class="text-muted mb-0">Negara Pengunjung</p></center>
                     </div>
                 </div>
             </div>
@@ -206,7 +226,7 @@
     <!-- Rekomendasi Section -->
     <section class="rekomendasi">
         <div class="container">
-            <h2 class="section-title">REKOMENDASI WISATA</h2>
+            <h2 class="section-title">REKOMENDASI WISATA</h2><br>
             <div class="row justify-content-center">
                 <div class="col-md-3 mb-4">
                     <div class="card text-center">

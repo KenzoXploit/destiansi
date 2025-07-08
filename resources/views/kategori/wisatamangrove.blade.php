@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wisata Mangrove Palopo</title>
+    <title>Wisata Mangrove Sulawesi Selatan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -35,23 +35,53 @@
             overflow: hidden;
         }
 
+        /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+            position: relative;
             height: 60vh;
-            color: white;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-bottom: 50px;
+            color: white;
+            margin-bottom: 40px;
         }
 
+        .hero-section video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 20px 0 20px;
+        }
+
+        /* Section Title */
         .section-title {
             font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 50px;
+            margin: 0 0 40px;
             text-align: center;
             position: relative;
         }
@@ -68,6 +98,7 @@
             border-radius: 2px;
         }
 
+        /* Wisata Card */
         .wisata-card {
             transition: transform 0.3s;
             margin-bottom: 30px;
@@ -100,6 +131,7 @@
             text-transform: uppercase;
         }
 
+        /* Button */
         .btn-primary {
             background-color: #0d6efd;
             border: none;
@@ -112,11 +144,11 @@
             background-color: #0056b3;
         }
 
+        /* Footer */
         footer {
             background: linear-gradient(to right, #2c3e50, #34495e);
             color: white;
             padding: 30px 0;
-            margin-top: 50px;
         }
 
         footer h3 {
@@ -139,13 +171,34 @@
             transform: scale(1.2);
             color: #ffd700;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh;
+                margin-bottom: 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            
+            .content-section {
+                padding: 30px 0;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">WISATA PALOPO</a>
+            <a class="navbar-brand" href="/">PARIWISATA SULAWESI SELATAN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -170,16 +223,20 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Video -->
     <div class="hero-section">
-        <div>
-            <h1 class="display-4">WISATA MANGROVE PALOPO</h1>
-            <p class="lead">Jelajahi keindahan hutan mangrove dan ekosistemnya di Palopo</p>
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="https://kenzo-fdl.my.id/TheBoys/bg_semua.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1 class="display-4">WISATA MANGROVE SULAWESI SELATAN</h1>
+            <p class="lead">Jelajahi keindahan hutan mangrove dan ekosistemnya di Sulawesi Selatan</p>
         </div>
     </div>
 
     <!-- Konten Wisata Mangrove -->
-    <div class="container mb-5">
+    <div class="container content-section">
         <h2 class="section-title">DESTINASI WISATA MANGROVE</h2>
         <div class="row">
             @foreach ($data as $item)
@@ -203,17 +260,27 @@
     <!-- Footer -->
     <footer class="text-center">
         <div class="container">
-            <h3>WISATA MANGROVE PALOPO</h3>
-            <p>Nikmati keindahan dan kesejukan alam bakau Kota Palopo</p>
+            <h3>WISATA MANGROVE SULAWESI SELATAN</h3>
+            <p>Nikmati keindahan dan kesejukan alam bakau Provinsi Sulawesi Selatan</p>
             <div class="social-links mt-3">
                 <a href="http://instagram.com/algzspace"><i class="fab fa-instagram fa-2x"></i></a>
                 <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
                 <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
             </div>
-            <p class="mt-3">&copy; {{ date('Y') }} Wisata Palopo. All Rights Reserved.</p>
+            <p class="mt-3 mb-0">&copy; {{ date('Y') }} Pariwisata Sulawesi Selatan. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const video = document.querySelector("video");
+        if (video) {
+            video.play().catch(error => {
+                console.log("Autoplay diblokir: ", error);
+            });
+        }
+    });
+    </script>
 </body>
 </html>

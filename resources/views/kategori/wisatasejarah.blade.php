@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wisata Sejarah Palopo</title>
+    <title>Wisata Sejarah Sulawesi Selatan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -35,6 +35,7 @@
             overflow: hidden;
         }
 
+        /* Hero Section */
         .hero-section {
             position: relative;
             height: 60vh;
@@ -44,6 +45,7 @@
             justify-content: center;
             text-align: center;
             color: white;
+            margin-bottom: 40px;
         }
 
         .hero-section video {
@@ -67,12 +69,19 @@
         .hero-content {
             position: relative;
             z-index: 2;
+            padding: 0 20px;
         }
 
+        /* Content Section */
+        .content-section {
+            padding: 20px 0 20px;
+        }
+
+        /* Section Title */
         .section-title {
             font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 50px;
+            margin: 0 0 40px;
             text-align: center;
             position: relative;
         }
@@ -89,6 +98,7 @@
             border-radius: 2px;
         }
 
+        /* Wisata Card */
         .wisata-card {
             transition: transform 0.3s;
             margin-bottom: 30px;
@@ -121,6 +131,7 @@
             text-transform: uppercase;
         }
 
+        /* Button */
         .btn-primary {
             background-color: #0d6efd;
             border: none;
@@ -133,11 +144,11 @@
             background-color: #0056b3;
         }
 
+        /* Footer */
         footer {
             background: linear-gradient(to right, #2c3e50, #34495e);
             color: white;
             padding: 30px 0;
-            margin-top: 50px;
         }
 
         footer h3 {
@@ -160,13 +171,34 @@
             transform: scale(1.2);
             color: #ffd700;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh;
+                margin-bottom: 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            
+            .content-section {
+                padding: 30px 0;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">WISATA PALOPO</a>
+            <a class="navbar-brand" href="/">PARIWISATA SULAWESI SELATAN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -198,13 +230,13 @@
             Your browser does not support the video tag.
         </video>
         <div class="hero-content">
-            <h1 class="display-4">WISATA SEJARAH PALOPO</h1>
-            <p class="lead">Kenali warisan sejarah dan budaya yang mengakar di Kota Palopo</p>
+            <h1 class="display-4">WISATA SEJARAH SULAWESI SELATAN</h1>
+            <p class="lead">Kenali warisan sejarah dan budaya yang mengakar di Provinsi Sulawesi Selatan</p>
         </div>
     </div>
 
     <!-- Konten Wisata Sejarah -->
-    <div class="container mb-5">
+    <div class="container content-section">
         <h2 class="section-title">DESTINASI WISATA SEJARAH</h2>
         <div class="row">
             @foreach ($data as $item)
@@ -228,14 +260,14 @@
     <!-- Footer -->
     <footer class="text-center">
         <div class="container">
-            <h3>WISATA SEJARAH PALOPO</h3>
-            <p>Menjelajahi jejak masa lalu yang kaya makna di Palopo</p>
+            <h3>WISATA SULAWESI SELATAN</h3>
+            <p>Temukan kedamaian spiritual dan keindahan alam di Provinsi Sulawesi Selatan</p>
             <div class="social-links mt-3">
                 <a href="http://instagram.com/algzspace"><i class="fab fa-instagram fa-2x"></i></a>
                 <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
                 <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
             </div>
-            <p class="mt-3">&copy; {{ date('Y') }} Wisata Palopo. All Rights Reserved.</p>
+            <p class="mt-3 mb-0">&copy; {{ date('Y') }} Wisata Sulawesi Selatan. All Rights Reserved.</p>
         </div>
     </footer>
 
