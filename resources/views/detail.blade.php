@@ -6,6 +6,9 @@
     <title>Detail Wisata - {{ $data->nama }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -29,16 +32,44 @@
             color: #ffc107 !important;
         }
 
+        .btn-outline-light {
+            border-radius: 25px;
+        }
+
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+            position: relative;
             height: 50vh;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #ffffff;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .hero-section video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .hero-section .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
         }
 
         .detail-image {
@@ -95,6 +126,20 @@
             margin-bottom: 30px;
         }
 
+        .brand-text {
+            font-family: "Merienda", cursive;
+            font-weight: 800;
+            color: white;
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .brand-text {
+                font-size: 1rem;
+            }
+        }
+
         footer {
             background: linear-gradient(to right, #2c3e50, #34495e);
             color: white;
@@ -119,30 +164,42 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">WISATA PALOPO</a>
+            <a class="navbar-brand d-flex align-items-center text-nowrap" href="/">
+                <img src="https://kenzo-fdl.my.id/TheBoys/logonav.png" alt="Logo Wisata" height="36" class="me-2">
+                <span class="brand-text">Pariwisata Sulawesi Selatan</span>
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">BERANDA</a></li>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center me-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">BERANDA</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="wisataDropdown" data-bs-toggle="dropdown">OBJEK WISATA</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="wisataDropdown" role="button" data-bs-toggle="dropdown">
+                            OBJEK WISATA
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('kategori.religi') }}">Objek Wisata Religi</a></li>
-                            <li><a class="dropdown-item" href="{{ route('kategori.mangrove') }}">Objek Wisata Mangrove</a></li>
-                            <li><a class="dropdown-item" href="{{ route('kategori.sejarah') }}">Objek Wisata Sejarah</a></li>
+                            <li><a class="dropdown-item" href="/kategori/wisatareligi">Objek Wisata Religi</a></li>
+                            <li><a class="dropdown-item" href="/kategori/wisatamangrove">Objek Wisata Mangrove</a></li>
+                            <li><a class="dropdown-item" href="/kategori/wisatasejarah">Objek Wisata Sejarah</a></li>
                         </ul>
                     </li>
                 </ul>
-                <a href="/login" class="btn btn-outline-light rounded-pill">LOGIN</a>
+                <a href="/login" class="btn btn-outline-light">LOGIN</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
     <div class="hero-section">
-        <div>
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="https://kenzo-fdl.my.id/TheBoys/bg_semua.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
             <h1 class="display-4">{{ $data->nama }}</h1>
             <p class="lead">{{ $data->kategori }}</p>
         </div>
@@ -207,5 +264,15 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const video = document.querySelector("video");
+            if (video) {
+                video.play().catch(error => {
+                    console.log("Autoplay diblokir: ", error);
+                });
+            }
+        });
+</script>
 </body>
 </html>

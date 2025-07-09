@@ -6,6 +6,9 @@
     <title>Pariwisata Sulawesi Selatan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -17,10 +20,11 @@
         }
 
         .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: white !important;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
         }
+
 
         .nav-link {
             color: #ffffff !important;
@@ -126,6 +130,20 @@
             object-fit: cover;
         }
 
+        .brand-text {
+            font-family: "Merienda", cursive;
+            font-weight: 800;
+            color: white;
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .brand-text {
+                font-size: 1rem;
+            }
+        }
+
         footer {
             background: linear-gradient(to right, #2c3e50, #34495e);
             color: white;
@@ -155,12 +173,16 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">WISATA SULAWESI SELATAN</a>
+            <a class="navbar-brand d-flex align-items-center text-nowrap" href="/">
+                <img src="https://kenzo-fdl.my.id/TheBoys/logonav.png" alt="Logo Wisata" height="36" class="me-2">
+                <span class="brand-text">Pariwisata Sulawesi Selatan</span>
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center me-lg-3">
                     <li class="nav-item">
                         <a class="nav-link active" href="/">BERANDA</a>
                     </li>
@@ -229,7 +251,7 @@
             <h2 class="section-title">REKOMENDASI WISATA</h2><br>
             <div class="row justify-content-center">
                 <div class="col-md-3 mb-4">
-                    <div class="card text-center">
+                    <div class="card text-center" onclick="window.location.href='/detail/13'" style="cursor: pointer;">
                         <img src="{{ asset('uploads/1751042299_99kuba.jpeg') }}" class="card-img-top" alt="99kuba">
                         <div class="card-body">
                             <h5 class="card-title">Masjid 99 Kubah Makassar</h5>
@@ -237,9 +259,10 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3 mb-4">
-                    <div class="card text-center">
-                        <img src="{{ asset('uploads/1750742909_benteng.jpg') }}" class="card-img-top" alt="benteng">
+                    <div class="card text-center" onclick="window.location.href='/detail/3'" style="cursor: pointer;">
+                        <img src="{{ asset('uploads/1750742909_benteng.jpg') }}" class="card-img-top" alt="Benteng Rotterdam">
                         <div class="card-body">
                             <h5 class="card-title">Benteng Rotterdam</h5>
                             <p class="card-text"><strong>2nd place</strong><br>Objek Wisata Sejarah</p>
@@ -247,20 +270,20 @@
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card text-center">
-                        <img src="{{ asset('images/rajaampat.jpg') }}" class="card-img-top" alt="Raja Ampat">
+                    <div class="card text-center" onclick="window.location.href='/detail/15'" style="cursor: pointer;">
+                        <img src="{{ asset('uploads/1751347223_istana.jpg') }}" class="card-img-top" alt="Museum Batara Guru">
                         <div class="card-body">
-                            <h5 class="card-title">Piyanemo Raja Ampat</h5>
-                            <p class="card-text"><strong>3rd place</strong><br>Piyanemo Raja Ampat</p>
+                            <h5 class="card-title">Museum Batara Guru</h5>
+                            <p class="card-text"><strong>3rd place</strong><br>Objek Wisata Sejarah</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card text-center">
-                        <img src="{{ asset('images/kelimutu.jpg') }}" class="card-img-top" alt="Gunung Kelimutu">
+                    <div class="card text-center" onclick="window.location.href='/detail/2'" style="cursor: pointer;">
+                        <img src="{{ asset('uploads/1750742496_lantebung.jpg') }}" class="card-img-top" alt="Wisata Mangrove Lantebung">
                         <div class="card-body">
-                            <h5 class="card-title">Gunung Kelimutu</h5>
-                            <p class="card-text"><strong>4th place</strong><br>Gunung Kelimutu</p>
+                            <h5 class="card-title">Wisata Mangrove Lantebung</h5>
+                            <p class="card-text"><strong>4th place</strong><br>Objek Wisata Mangrove</p>
                         </div>
                     </div>
                 </div>
@@ -284,14 +307,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const video = document.querySelector("video");
-    if (video) {
-        video.play().catch(error => {
-            console.log("Autoplay diblokir: ", error);
+        document.addEventListener('DOMContentLoaded', function () {
+            const video = document.querySelector("video");
+            if (video) {
+                video.play().catch(error => {
+                    console.log("Autoplay diblokir: ", error);
+                });
+            }
         });
-    }
-});
 </script>
 </body>
 </html>

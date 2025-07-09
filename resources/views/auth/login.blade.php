@@ -6,6 +6,9 @@
     <title>LOGIN - Wisata Sulawesi Selatan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@800&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -141,6 +144,20 @@
             border-radius: 25px;
         }
 
+        .brand-text {
+            font-family: "Merienda", cursive;
+            font-weight: 800;
+            color: white;
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .brand-text {
+                font-size: 1rem;
+            }
+        }
+
         /* Footer styling */
         footer {
             background: linear-gradient(to right, #2c3e50, #34495e);
@@ -211,33 +228,37 @@
 </head>
 <body>
     <div class="main-container">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-            <div class="container">
-                <a class="navbar-brand" href="/">WISATA SULAWESI SELATAN</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">BERANDA</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="wisataDropdown" role="button" data-bs-toggle="dropdown">
-                                OBJEK WISATA
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/kategori/wisatareligi">Objek Wisata Religi</a></li>
-                                <li><a class="dropdown-item" href="/kategori/wisatamangrove">Objek Wisata Mangrove</a></li>
-                                <li><a class="dropdown-item" href="/kategori/wisatasejarah">Objek Wisata Sejarah</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <a href="/login" class="btn btn-outline-light">LOGIN</a>
-                </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center text-nowrap" href="/">
+                <img src="https://kenzo-fdl.my.id/TheBoys/logonav.png" alt="Logo Wisata" height="36" class="me-2">
+                <span class="brand-text">Pariwisata Sulawesi Selatan</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center me-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">BERANDA</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="wisataDropdown" role="button" data-bs-toggle="dropdown">
+                            OBJEK WISATA
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/kategori/wisatareligi">Objek Wisata Religi</a></li>
+                            <li><a class="dropdown-item" href="/kategori/wisatamangrove">Objek Wisata Mangrove</a></li>
+                            <li><a class="dropdown-item" href="/kategori/wisatasejarah">Objek Wisata Sejarah</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="/login" class="btn btn-outline-light">LOGIN</a>
             </div>
-        </nav>
+        </div>
+    </nav>
 
         <!-- Video Background -->
         <video class="video-background" autoplay muted loop playsinline>
@@ -289,5 +310,15 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const video = document.querySelector("video");
+            if (video) {
+                video.play().catch(error => {
+                    console.log("Autoplay diblokir: ", error);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
