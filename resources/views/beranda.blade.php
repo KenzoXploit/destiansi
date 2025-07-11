@@ -18,7 +18,6 @@
         .navbar {
             background: linear-gradient(to right, #007bff, #00b894);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            min-height: 60px; /* Tambahkan tinggi minimum */
         }
 
         .navbar-brand {
@@ -99,24 +98,84 @@
             padding: 10px 0 50px;
         }
 
+        #nav-icon2 {
+          width: 30px;
+          height: 25px;
+          position: relative;
+          margin-left: auto;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        #nav-icon2 span {
+          display: block;
+          position: absolute;
+          height: 4px;
+          width: 50%;
+          background: white;
+          opacity: 1;
+          border-radius: 4px;
+          transform: rotate(0deg);
+          transition: 0.25s ease-in-out;
+        }
+
+        #nav-icon2 span:nth-child(even) {
+          left: 50%;
+          border-radius: 0 4px 4px 0;
+        }
+
+        #nav-icon2 span:nth-child(odd) {
+          left: 0;
+          border-radius: 4px 0 0 4px;
+        }
+
+        #nav-icon2 span:nth-child(1), #nav-icon2 span:nth-child(2) {
+          top: 0px;
+        }
+        #nav-icon2 span:nth-child(3), #nav-icon2 span:nth-child(4) {
+          top: 10px;
+        }
+        #nav-icon2 span:nth-child(5), #nav-icon2 span:nth-child(6) {
+          top: 20px;
+        }
+
+        #nav-icon2.open span:nth-child(1), #nav-icon2.open span:nth-child(6) {
+          transform: rotate(45deg);
+        }
+
+        #nav-icon2.open span:nth-child(2), #nav-icon2.open span:nth-child(5) {
+          transform: rotate(-45deg);
+        }
+
+        #nav-icon2.open span:nth-child(1) {
+          top: 8px;
+          left: 3px;
+        }
+        #nav-icon2.open span:nth-child(2) {
+          top: 8px;
+          left: calc(50% - 3px);
+        }
+        #nav-icon2.open span:nth-child(3) {
+          left: -60%;
+          opacity: 0;
+        }
+        #nav-icon2.open span:nth-child(4) {
+          left: 100%;
+          opacity: 0;
+        }
+        #nav-icon2.open span:nth-child(5) {
+          top: 16px;
+          left: 3px;
+        }
+        #nav-icon2.open span:nth-child(6) {
+          top: 16px;
+          left: calc(50% - 3px);
+        }
+
         /* Tambahkan media query untuk responsif */
         @media (max-width: 768px) {
-            .navbar-collapse {
-                background: linear-gradient(to right, #007bff, #00b894);
-                padding: 15px;
-                margin-top: 10px;
-                border-radius: 5px;
-            }
-            
-            .navbar-nav {
-                align-items: flex-start;
-            }
-            
-            .dropdown-menu {
-                position: static !important;
-                float: none;
-                width: 100%;
-            }
             .rekomendasi {
                 padding: 30px 0 20px;
             }
@@ -196,9 +255,12 @@
                 <span class="brand-text">Pariwisata Sulawesi Selatan</span>
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <!-- Custom Hamburger Button -->
+            <div id="nav-icon2" class="d-lg-none" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center me-lg-3">
                     <li class="nav-item">
@@ -219,6 +281,7 @@
             </div>
         </div>
     </nav>
+
 
     <!-- Hero Section with Video -->
     <section class="hero">
@@ -323,16 +386,34 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const video = document.querySelector("video");
-            if (video) {
-                video.play().catch(error => {
-                    console.log("Autoplay diblokir: ", error);
-                });
-            }
+        $(document).ready(function(){
+            $('#nav-icon2').on('click', function(){
+                $(this).toggleClass('open');
+                // Hapus baris toggleClass show karena Bootstrap sudah mengatur collapse-nya otomatis
+            });
+
+            // Tambahkan ini agar ikon kembali normal saat navbar otomatis tertutup
+            $('#navbarNav').on('hidden.bs.collapse', function () {
+                $('#nav-icon2').removeClass('open');
+            });
+
+            $('#navbarNav').on('shown.bs.collapse', function () {
+                $('#nav-icon2').addClass('open');
+            });
         });
-</script>
+    </script>
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const video = document.querySelector("video");
+                if (video) {
+                    video.play().catch(error => {
+                        console.log("Autoplay diblokir: ", error);
+                    });
+                }
+            });
+    </script>
 </body>
 </html>
