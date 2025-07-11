@@ -181,6 +181,22 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
+            .navbar-collapse {
+                background: linear-gradient(to right, #007bff, #00b894);
+                padding: 15px;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+            
+            .navbar-nav {
+                align-items: flex-start;
+            }
+            
+            .dropdown-menu {
+                position: static !important;
+                float: none;
+                width: 100%;
+            }
             .content-wrapper {
                 padding: 20px 15px;
                 align-items: flex-start; /* Untuk mobile, mulai dari atas */

@@ -18,6 +18,7 @@
         .navbar {
             background: linear-gradient(to right, #007bff, #00b894);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-height: 60px; /* Tambahkan tinggi minimum */
         }
 
         .navbar-brand {
@@ -100,6 +101,22 @@
 
         /* Tambahkan media query untuk responsif */
         @media (max-width: 768px) {
+            .navbar-collapse {
+                background: linear-gradient(to right, #007bff, #00b894);
+                padding: 15px;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+            
+            .navbar-nav {
+                align-items: flex-start;
+            }
+            
+            .dropdown-menu {
+                position: static !important;
+                float: none;
+                width: 100%;
+            }
             .rekomendasi {
                 padding: 30px 0 20px;
             }
