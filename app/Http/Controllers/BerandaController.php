@@ -27,7 +27,7 @@ class BerandaController extends Controller
         }
 
         $totalVisitors = DB::table('pengunjung')->count();
-
-        return view('beranda', compact('totalVisitors'));
+        $todayVisitors = DB::table('pengunjung')->whereDate('created_at',  now()->toDateString())->distinct('ip')->count('ip');
+        return view('beranda', compact('totalVisitors', 'todayVisitors'));
     }
 }
