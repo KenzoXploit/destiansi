@@ -311,7 +311,7 @@
                 <div class="col-md-3 col-6 mb-3">
                     <div class="p-4 border rounded shadow-sm">
                         <center><i class="fa fa-chart-line fa-2x mb-2 text-success"></i></center>
-                        <center><h3 class="fw-bold">{{ number_format($todayVisitors) }}</h3></center>
+                        <center><h3 class="fw-bold">{{ $todayVisitors }}</h3></center>
                         <center><p class="text-muted mb-0">Pengunjung Hari Ini</p></center>
                     </div>
                 </div>
